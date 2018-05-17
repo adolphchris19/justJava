@@ -9,11 +9,12 @@
 package com.example.android.justjava;
 
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.NumberFormat;
 
 /**
@@ -44,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         do {
             quantity = quantity - 1;
-            display(quantity);
-        }while(quantity >= 0);
+
+        }while(quantity < 0);
+        display(quantity);
     }
 
 
@@ -54,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void submitOrder(View view) {
+
+        Toast.makeText(MainActivity.this,("any text you want to insert"), Toast.LENGTH_SHORT).show();
         display(quantity);
         displayPrice(quantity * 5);
+
     }
 
     /**
