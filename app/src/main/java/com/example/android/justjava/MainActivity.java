@@ -42,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-
-            quantity = quantity - 1;
-            display(quantity);
+        if(quantity >= 1 ){
+            quantity -= 1;
+            display (quantity);
+        }
     }
 
 
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void submitOrder(View view) {
-        String priceMessage = "Total = $" + (quantity * 5);
+        int price = quantity * 5;
+        String priceMessage = "TOTAL: $" + price;
+        priceMessage = priceMessage + "\n \n Thank You";
         displayMessage(priceMessage);
     }
 
