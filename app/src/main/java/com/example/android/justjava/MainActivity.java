@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -22,7 +21,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 2;
+    int quantity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +42,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        do {
-            quantity = quantity - 1;
 
-        }while(quantity < 0);
-        display(quantity);
+            quantity = quantity - 1;
+            display(quantity);
     }
 
 
@@ -56,11 +53,8 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void submitOrder(View view) {
-
-        Toast.makeText(MainActivity.this,("any text you want to insert"), Toast.LENGTH_SHORT).show();
-        display(quantity);
-        displayPrice(quantity * 5);
-
+        String priceMessage = "Total = $" + (quantity * 5);
+        displayMessage(priceMessage);
     }
 
     /**
@@ -76,5 +70,13 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 }
